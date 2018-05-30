@@ -460,7 +460,16 @@ create      test/fixtures/blorgh/comments.yml
 
 This generator call will generate just the necessary model files it needs,
 namespacing the files under a `blorgh` directory and creating a model class
-called `Blorgh::Comment`. Now run the migration to create our blorgh_comments
+called `Blorgh::Comment`.
+
+NOTE: If you were instead creating a model that required a
+[custom inflection rule](http://api.rubyonrails.org/classes/ActiveSupport/Inflector/Inflections.html),
+such as `Quota` (plural `Quotas` rather than the default `Quotum`), the rule should be
+placed inside your engine's class definition in `lib/blorgh/engine.rb`, *not* in
+`config/initializers/inflections.rb`, since generators for engines do not load files
+in `config/initializers/*`.
+
+Now run the migration to create our blorgh_comments
 table:
 
 ```bash
