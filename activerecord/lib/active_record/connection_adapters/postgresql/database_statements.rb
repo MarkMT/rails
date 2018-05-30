@@ -134,6 +134,8 @@ module ActiveRecord
         end
 
         def exec_query(sql, name = 'SQL', binds = [])
+          Rails.logger.info "***** #{sql.inspect}"
+          Rails.logger.info "***** #{without_prepared_statement?(binds)}"
           result = without_prepared_statement?(binds) ? exec_no_cache(sql, name, binds) :
                                                         exec_cache(sql, name, binds)
 
