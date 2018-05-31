@@ -824,6 +824,10 @@ module ActiveRecord
 
         def exec_cache(sql, name, binds)
           stmt_key = prepare_statement(sql)
+          Rails.logger.info "***** sql #{sql.inspect}"
+          Rails.logger.info "***** name #{name.inspect}"
+          Rails.logger.info "***** binds #{binds.inspect}"
+          Rails.logger.info "***** stmt_key #{stmt_key.inspect}"
           type_casted_binds = binds.map { |col, val|
             [col, type_cast(val, col)]
           }
@@ -863,6 +867,7 @@ module ActiveRecord
         # the statement key.
         def prepare_statement(sql)
           sql_key = sql_key(sql)
+          Rails.logger.info "***** sql_key #{sql_key.inspect}"
           unless @statements.key? sql_key
             nextkey = @statements.next_key
             begin
