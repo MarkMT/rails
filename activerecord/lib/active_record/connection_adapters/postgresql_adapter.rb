@@ -824,6 +824,7 @@ module ActiveRecord
 
         def exec_cache(sql, name, binds)
           stmt_key = prepare_statement(sql)
+          Rails.logger.info "***** Process id #{Process.pid.inspect}"
           Rails.logger.info "***** sql #{sql.inspect}"
           Rails.logger.info "***** name #{name.inspect}"
           Rails.logger.info "***** binds #{binds.inspect}"
