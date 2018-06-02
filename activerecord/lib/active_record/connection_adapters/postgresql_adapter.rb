@@ -870,6 +870,7 @@ module ActiveRecord
           sql_key = sql_key(sql)
           Rails.logger.info "***** sql_key #{sql_key.inspect}"
           unless @statements.key? sql_key
+            Rails.logger.info "***** preparing statement"
             nextkey = @statements.next_key
             begin
               @connection.prepare nextkey, sql
