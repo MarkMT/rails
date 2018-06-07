@@ -264,6 +264,8 @@ module ActiveRecord
         @reserved_connections[current_connection_id] || synchronize do
           @reserved_connections[current_connection_id] ||= checkout
         end
+        Rails.logger.info "***** connection_id #{current_connection_id}"
+        @reserved_connections[current_connection_id]
       end
 
       # Is there an open connection that is being used for the current thread?
@@ -571,6 +573,8 @@ module ActiveRecord
       # take place, but that's ok since the nil case is not the common one that we wish
       # to optimise for.
       def retrieve_connection_pool(klass)
+        Rails.logger.info "***** owner_to_pool keys #{@owner_to_pool.keys.inspect}"
+        Rails.logger.info "***** process_id #{Process.id}"
         class_to_pool[klass.name] ||= begin
           until pool = pool_for(klass)
             klass = klass.superclass
@@ -579,6 +583,8 @@ module ActiveRecord
 
           class_to_pool[klass.name] = pool
         end
+        Rails.logger.info "***** connection_pool #{class_to_pool[klass.name].object_id}"
+        class_to_pool[klass.name]
       end
 
       private
