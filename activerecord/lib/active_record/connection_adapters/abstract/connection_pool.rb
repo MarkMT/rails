@@ -574,7 +574,7 @@ module ActiveRecord
       # to optimise for.
       def retrieve_connection_pool(klass)
         Rails.logger.info "***** owner_to_pool keys #{@owner_to_pool.keys.inspect}" if Rails.logger
-        Rails.logger.info "***** process_id #{Process.id}" if Rails.logger
+        Rails.logger.info "***** process_id #{Process.pid}" if Rails.logger
         class_to_pool[klass.name] ||= begin
           until pool = pool_for(klass)
             klass = klass.superclass
