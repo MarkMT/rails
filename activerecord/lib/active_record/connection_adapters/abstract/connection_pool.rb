@@ -264,7 +264,7 @@ module ActiveRecord
         @reserved_connections[current_connection_id] || synchronize do
           @reserved_connections[current_connection_id] ||= checkout
         end
-        Rails.logger.info "***** connection_id #{current_connection_id}"
+        Rails.logger.info "***** connection_id #{current_connection_id}" if Rails.logger
         @reserved_connections[current_connection_id]
       end
 
@@ -573,8 +573,8 @@ module ActiveRecord
       # take place, but that's ok since the nil case is not the common one that we wish
       # to optimise for.
       def retrieve_connection_pool(klass)
-        Rails.logger.info "***** owner_to_pool keys #{@owner_to_pool.keys.inspect}"
-        Rails.logger.info "***** process_id #{Process.id}"
+        Rails.logger.info "***** owner_to_pool keys #{@owner_to_pool.keys.inspect}" if Rails.logger
+        Rails.logger.info "***** process_id #{Process.id}" if Rails.logger
         class_to_pool[klass.name] ||= begin
           until pool = pool_for(klass)
             klass = klass.superclass
@@ -583,7 +583,7 @@ module ActiveRecord
 
           class_to_pool[klass.name] = pool
         end
-        Rails.logger.info "***** connection_pool #{class_to_pool[klass.name].object_id}"
+        Rails.logger.info "***** connection_pool #{class_to_pool[klass.name].object_id}" if Rails.logger
         class_to_pool[klass.name]
       end
 
