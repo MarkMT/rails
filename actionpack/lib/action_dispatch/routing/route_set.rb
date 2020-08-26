@@ -766,6 +766,7 @@ module ActionDispatch
       end
 
       def find_relative_url_root(options)
+        puts "***** relative_url_root #{relative_url_root}"
         options.delete(:relative_url_root) || relative_url_root
       end
 
@@ -775,6 +776,9 @@ module ActionDispatch
 
       # The +options+ argument must be a hash whose keys are *symbols*.
       def url_for(options, route_name = nil, url_strategy = UNKNOWN)
+
+        puts "***** url_for options #{options.inspect}"
+        puts "***** default_url_options #{default_url_options.inspect}"
         options = default_url_options.merge options
 
         user = password = nil
