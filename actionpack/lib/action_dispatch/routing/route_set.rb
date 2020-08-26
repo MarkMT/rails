@@ -777,6 +777,7 @@ module ActionDispatch
       # The +options+ argument must be a hash whose keys are *symbols*.
       def url_for(options, route_name = nil, url_strategy = UNKNOWN)
 
+        puts "***** route_name #{route_name}"
         puts "***** url_for options #{options.inspect}"
         puts "***** default_url_options #{default_url_options.inspect}"
         options = default_url_options.merge options
