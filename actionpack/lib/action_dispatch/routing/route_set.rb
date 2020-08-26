@@ -271,6 +271,10 @@ module ActionDispatch
           def call(t, args, inner_options)
             controller_options = t.url_options
             options = controller_options.merge @options
+            puts "***** URLHelper options #{@options.inspect}"
+            puts "***** Controller options #{controller_options.inspect}"
+            puts "***** args #{args.inspect}"
+            puts "***** segment_keys #{@segment_keys.inspect}"
             hash = handle_positional_args(controller_options,
                                           deprecate_string_options(inner_options) || {},
                                           args,
