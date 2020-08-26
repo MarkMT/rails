@@ -113,7 +113,7 @@ module ActionDispatch
             result << ":#{normalized_port}"
           }
 
-          Rails.logger.info "***** #{result} + #{path}"
+          puts "***** #{result} + #{path}"
           result.concat path
         end
 

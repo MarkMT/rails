@@ -261,7 +261,7 @@ module ActionDispatch
           end
 
           def initialize(route, options, route_name, url_strategy)
-            Rails.logger.info "#{options.inspect} #{route_name}"
+            puts "#{options.inspect} #{route_name}"
             @options      = options
             @segment_keys = route.segment_keys.uniq
             @route        = route
