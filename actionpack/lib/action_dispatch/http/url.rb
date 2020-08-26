@@ -45,6 +45,7 @@ module ActionDispatch
             raise ArgumentError, 'Missing host to link to! Please provide the :host parameter, set default_url_options[:host], or set :only_path to true'
           end
 
+          puts "***** path options #{path_for(options).inspect}"
           build_host_url(host, port, protocol, options, path_for(options))
         end
 
