@@ -298,6 +298,7 @@ module ActionDispatch
 
           @request_count += 1
           @request  = ActionDispatch::Request.new(session.last_request.env)
+          puts "\n^^^^^ request #{@request.inspect}"
           response = _mock_session.last_response
           @response = ActionDispatch::TestResponse.from_response(response)
           @html_document = nil
