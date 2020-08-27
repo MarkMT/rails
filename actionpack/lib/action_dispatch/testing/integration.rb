@@ -296,6 +296,8 @@ module ActionDispatch
           # Make sure requested path is always a full uri
           session.request(build_full_uri(path, env), env)
 
+          puts "***** env #{env.inspect}"
+
           @request_count += 1
           @request  = ActionDispatch::Request.new(session.last_request.env)
           puts "\n^^^^^ request #{@request.inspect}"
