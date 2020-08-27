@@ -263,6 +263,7 @@ module ActionDispatch
 
         # Performs the actual request.
         def process(method, path, parameters = nil, headers_or_env = nil)
+          headers_or_env.merge!('SCRIPT_NAME' => '/pre')
           if path =~ %r{://}
             location = URI.parse(path)
             https! URI::HTTPS === location if location.scheme
