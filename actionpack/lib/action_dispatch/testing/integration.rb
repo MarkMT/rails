@@ -263,7 +263,6 @@ module ActionDispatch
 
         # Performs the actual request.
         def process(method, path, parameters = nil, headers_or_env = nil)
-          headers_or_env.merge!('SCRIPT_NAME' => '/pre')
           if path =~ %r{://}
             location = URI.parse(path)
             https! URI::HTTPS === location if location.scheme
@@ -287,6 +286,7 @@ module ActionDispatch
             "REMOTE_ADDR"    => remote_addr,
             "CONTENT_TYPE"   => "application/x-www-form-urlencoded",
             "HTTP_ACCEPT"    => accept
+            "Script_NAME"    => '/pre'
           }
           # this modifies the passed env directly
           Http::Headers.new(env).merge!(headers_or_env || {})
