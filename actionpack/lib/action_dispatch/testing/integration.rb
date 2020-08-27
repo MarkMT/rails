@@ -285,7 +285,7 @@ module ActionDispatch
             "HTTP_HOST"      => host,
             "REMOTE_ADDR"    => remote_addr,
             "CONTENT_TYPE"   => "application/x-www-form-urlencoded",
-            "HTTP_ACCEPT"    => accept
+            "HTTP_ACCEPT"    => accept,
             "Script_NAME"    => '/pre'
           }
           # this modifies the passed env directly
