@@ -81,6 +81,7 @@ module ActionDispatch
       # performed on the location header.
       def follow_redirect!
         raise "not a redirect! #{status} #{status_message}" unless redirect?
+        puts "***** redirect location #{response.location}"
         get(response.location)
         status
       end
