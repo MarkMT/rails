@@ -298,6 +298,7 @@ module ActionDispatch
 
           puts "***** env #{env.inspect}"
 
+          puts "***** last_request.env #{session.last_request.env.inspect}"
           @request_count += 1
           @request  = ActionDispatch::Request.new(session.last_request.env)
           puts "\n^^^^^ request #{@request.inspect}"
