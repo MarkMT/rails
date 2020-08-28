@@ -271,7 +271,7 @@ module ActionDispatch
           def call(t, args, inner_options)
             controller_options = t.url_options
             options = controller_options.merge @options
-            options.delete('SCRIPT_NAME')
+            #options.delete('SCRIPT_NAME')
             puts "***** URLHelper options #{@options.inspect}"
             puts "***** Controller options #{controller_options.inspect}"
             puts "***** args #{args.inspect}"
