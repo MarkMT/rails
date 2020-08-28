@@ -289,6 +289,7 @@ module ActionDispatch
             "HTTP_ACCEPT"    => accept
           }
           # this modifies the passed env directly
+          puts "***** headers_or_env #{headers_or_env}"
           Http::Headers.new(env).merge!(headers_or_env || {})
 
           session = Rack::Test::Session.new(_mock_session)
