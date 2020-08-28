@@ -286,8 +286,7 @@ module ActionDispatch
             "HTTP_HOST"      => host,
             "REMOTE_ADDR"    => remote_addr,
             "CONTENT_TYPE"   => "application/x-www-form-urlencoded",
-            "HTTP_ACCEPT"    => accept,
-            "SCRIPT_NAME"    => '/pre'
+            "HTTP_ACCEPT"    => accept
           }
           # this modifies the passed env directly
           Http::Headers.new(env).merge!(headers_or_env || {})
