@@ -29,12 +29,14 @@ module ActionDispatch
       # You can also perform POST, PATCH, PUT, DELETE, and HEAD requests with
       # +#post+, +#patch+, +#put+, +#delete+, and +#head+.
       def get(path, parameters = nil, headers_or_env = nil)
+        puts "***** calling get with headers_or_env #{headers_or_env.inspect}"
         process :get, path, parameters, headers_or_env
       end
 
       # Performs a POST request with the given parameters. See +#get+ for more
       # details.
       def post(path, parameters = nil, headers_or_env = nil)
+        puts "***** calling post with headers_or_env #{headers_or_env.inspect}"
         process :post, path, parameters, headers_or_env
       end
 
