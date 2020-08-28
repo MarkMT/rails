@@ -300,13 +300,13 @@ module ActionDispatch
           # Make sure requested path is always a full uri
           session.request(build_full_uri(path, env), env)
 
-          puts "***** env #{env.inspect}"
+          #puts "***** env #{env.inspect}"
 
-          puts "***** last_request.env #{session.last_request.env.inspect}"
+          #puts "***** last_request.env #{session.last_request.env.inspect}"
           session.last_request.env.delete('SCRIPT_NAME')
           @request_count += 1
           @request  = ActionDispatch::Request.new(session.last_request.env)
-          puts "\n^^^^^ request #{@request.inspect}"
+          #puts "\n^^^^^ request #{@request.inspect}"
           response = _mock_session.last_response
           @response = ActionDispatch::TestResponse.from_response(response)
           @html_document = nil
