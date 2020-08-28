@@ -767,7 +767,7 @@ module ActionDispatch
       end
 
       def find_script_name(options)
-        options.delete(:script_name) || find_relative_url_root(options) || ''
+        find_relative_url_root(options)  #options.delete(:script_name) || find_relative_url_root(options) || ''
       end
 
       def find_relative_url_root(options)
