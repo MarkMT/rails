@@ -530,9 +530,10 @@ module Rails
     # Defines the routes for this engine. If a block is given to
     # routes, it is appended to the engine.
     def routes
-      puts "***** routes config #{config.inspect}"
-      puts "***** config id #{config.object_id}"
-      @routes ||= ActionDispatch::Routing::RouteSet.new_with_config(config)
+      @routes ||= begin
+        puts "***** Instantating RouteSet with config #{config.object_id}"
+        ActionDispatch::Routing::RouteSet.new_with_config(config)
+      end
       @routes.append(&Proc.new) if block_given?
       @routes
     end

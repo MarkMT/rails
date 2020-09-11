@@ -316,13 +316,13 @@ module ActionDispatch
       end
 
       def self.new_with_config(config)
+        puts "***** new RouteSet with config.relative_url_root #{config.relative_url_root.inspect}"
         route_set_config = DEFAULT_CONFIG
 
         # engines apparently don't have this set
         if config.respond_to? :relative_url_root
           route_set_config.relative_url_root = config.relative_url_root
         end
-        puts "***** config.relative_url_root #{config.relative_url_root.inspect}"
         puts "***** route_set_config #{route_set_config.inspect}"
 
         if config.respond_to? :api_only
