@@ -672,7 +672,7 @@ module ActionDispatch
       end
 
       def find_script_name(options)
-        puts "***** script_name #{script_name.inspect}"
+        puts "***** script_name #{options[:script_name].inspect}"
         options.delete(:script_name) || find_relative_url_root(options) || ''
       end
 
