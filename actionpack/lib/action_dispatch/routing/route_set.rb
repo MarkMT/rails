@@ -672,10 +672,13 @@ module ActionDispatch
       end
 
       def find_script_name(options)
+        puts "***** script_name #{script_name.inspect}"
         options.delete(:script_name) || find_relative_url_root(options) || ''
       end
 
       def find_relative_url_root(options)
+        puts "***** relative_url_root #{options[:relative_url_root].inspect}"
+        puts "***** relative_url_root #{relative_url_root.inspect}"
         options.delete(:relative_url_root) || relative_url_root
       end
 
@@ -718,6 +721,7 @@ module ActionDispatch
         options[:user]        = user
         options[:password]    = password
 
+        puts "***** options #{options.inspect}"
         url_strategy.call options
       end
 
