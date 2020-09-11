@@ -322,6 +322,8 @@ module ActionDispatch
         if config.respond_to? :relative_url_root
           route_set_config.relative_url_root = config.relative_url_root
         end
+        puts "***** config.relative_url_root #{config.relative_url_root.inspect}"
+        puts "***** route_set_config #{route_set_config.inspect}"
 
         if config.respond_to? :api_only
           route_set_config.api_only = config.api_only
