@@ -771,7 +771,8 @@ module ActionDispatch
       end
 
       def find_relative_url_root(options)
-        puts "***** relative_url_root #{relative_url_root}"
+        puts "***** options relative_url_root #{options[:relative_url_root].inspect}"
+        puts "***** relative_url_root #{relative_url_root.inspect}"
         options.delete(:relative_url_root) || relative_url_root
       end
 
