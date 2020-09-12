@@ -675,13 +675,13 @@ module ActionDispatch
       end
 
       def find_script_name(options)
-        puts "***** script_name #{options[:script_name].inspect}"
+        Rails.logger.info "***** script_name #{options[:script_name].inspect}"
         options.delete(:script_name) || find_relative_url_root(options) || ''
       end
 
       def find_relative_url_root(options)
-        puts "***** relative_url_root #{options[:relative_url_root].inspect}"
-        puts "***** relative_url_root #{relative_url_root.inspect}"
+        Rails.logger.info "***** relative_url_root via options #{options[:relative_url_root].inspect}"
+        Rails.logger.info "***** relative_url_root via config #{relative_url_root.inspect}"
         options.delete(:relative_url_root) || relative_url_root
       end
 
@@ -692,9 +692,9 @@ module ActionDispatch
       # The +options+ argument must be a hash whose keys are *symbols*.
       def url_for(options, route_name = nil, url_strategy = UNKNOWN)
 
-        puts "***** route_name #{route_name}"
-        puts "***** url_for options #{options.inspect}"
-        puts "***** default_url_options #{default_url_options.inspect}"
+        Rails.logger.info "***** route_name #{route_name}"
+        Rails.logger.info "***** url_for options #{options.inspect}"
+        Rails.logger.info "***** default_url_options #{default_url_options.inspect}"
         options = default_url_options.merge options
 
         user = password = nil
@@ -728,7 +728,7 @@ module ActionDispatch
         options[:user]        = user
         options[:password]    = password
 
-        puts "***** options #{options.inspect}"
+        Rails.logger.info "***** options #{options.inspect}"
         url_strategy.call options
       end
 
