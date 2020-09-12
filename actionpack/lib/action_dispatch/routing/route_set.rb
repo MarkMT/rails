@@ -226,6 +226,9 @@ module ActionDispatch
 
           def call(t, args, inner_options)
             controller_options = t.url_options
+            Rails.logger.info "***** controller options #{controller_options.inspect}"
+            Rails.logger.info "***** UrlHelper options #{inner_options.inspect}"
+            Rails.logger.info "***** inner options #{@options.inspect}"
             options = controller_options.merge @options
             hash = handle_positional_args(controller_options,
                                           inner_options || {},
