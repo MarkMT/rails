@@ -226,7 +226,7 @@ module ActionDispatch
 
           def call(t, args, inner_options)
             controller_options = t.url_options
-            Rails.logger.info "***** t #{t.inspect}"
+            Rails.logger.info "***** t #{t.ancestors.inspect}"
             Rails.logger.info "***** controller options #{controller_options.inspect}"
             Rails.logger.info "***** UrlHelper options #{inner_options.inspect}"
             Rails.logger.info "***** inner options #{@options.inspect}"
