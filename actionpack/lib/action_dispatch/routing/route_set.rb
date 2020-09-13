@@ -357,7 +357,7 @@ module ActionDispatch
       end
 
       def relative_url_root
-        puts "***** config.realtive_url_root #{@config.relative_url_root.inspect}"
+        puts "***** config.relative_url_root #{@config.relative_url_root.inspect}"
         @config.relative_url_root
       end
 
@@ -685,6 +685,11 @@ module ActionDispatch
       def find_relative_url_root(options)
         Rails.logger.info "***** relative_url_root via options #{options[:relative_url_root].inspect}"
         Rails.logger.info "***** relative_url_root via config #{relative_url_root.inspect}"
+        if relative_url_root
+          Rails.logger.info "\n===================="
+          Rails.logger.info caller(0)
+          Rails.logger.info "====================\n"
+        end
         options.delete(:relative_url_root) || relative_url_root
       end
 
