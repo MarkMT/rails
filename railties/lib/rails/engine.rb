@@ -532,6 +532,8 @@ module Rails
     def routes
       @routes ||= begin
         puts "***** Instantating RouteSet with config #{config.object_id}"
+        puts caller(0)
+        puts "*****************************"
         ActionDispatch::Routing::RouteSet.new_with_config(config)
       end
       @routes.append(&Proc.new) if block_given?

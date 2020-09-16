@@ -297,6 +297,7 @@ module ActionDispatch
                             raise ArgumentError, ActionDispatch::Routing::INSECURE_URL_PARAMETERS_MESSAGE
                           end
                         end
+              puts "***** define_url_helper #{self.class.inspect}"
               helper.call self, args, options
             end
           end

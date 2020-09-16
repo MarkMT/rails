@@ -361,7 +361,10 @@ module Rails
     end
 
     def config #:nodoc:
-      @config ||= Application::Configuration.new(self.class.find_root(self.class.called_from))
+      @config ||= begin
+        puts "***** configuration root #{self.class.find_root(self.class.called_from)}"
+        Application::Configuration.new(self.class.find_root(self.class.called_from))
+      end
     end
 
     def config=(configuration) #:nodoc:

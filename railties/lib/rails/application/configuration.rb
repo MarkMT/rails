@@ -22,6 +22,8 @@ module Rails
       attr_reader :encoding, :api_only, :static_cache_control
 
       def initialize(*)
+        puts "***** creating application configuration"
+        puts caller(0)
         super
         self.encoding = "utf-8"
         @allow_concurrency               = nil
