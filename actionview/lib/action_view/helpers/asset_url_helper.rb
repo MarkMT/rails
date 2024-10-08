@@ -184,6 +184,7 @@ module ActionView
       def asset_path(source, options = {})
         raise ArgumentError, "nil is not a valid asset source" if source.nil?
 
+        puts "***** ActionView asset_path #{source.inspect}"
         source = source.to_s
         return "" if source.blank?
         return source if URI_REGEXP.match?(source)
