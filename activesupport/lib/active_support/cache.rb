@@ -105,6 +105,7 @@ module ActiveSupport
         end
 
         expanded_cache_key << retrieve_cache_key(key)
+        puts "***** expanded_cache_key #{expanded_cache_key.inspect}"
         expanded_cache_key
       end
 
@@ -362,11 +363,15 @@ module ActiveSupport
       def read(name, options = nil)
         options = merged_options(options)
         key     = normalize_key(name, options)
+        puts "***** normalized key #{key.inspect}"
         version = normalize_version(name, options)
+        puts "***** version #{version.inspect}"
 
         instrument(:read, name, options) do |payload|
           entry = read_entry(key, **options, event: payload)
 
+          puts "***** entry #{entry.value.try(:first, 150).inspect}" if entry
+          puts "***** version #{entry.version.inspect}" if entry
           if entry
             if entry.expired?
               delete_entry(key, **options)
