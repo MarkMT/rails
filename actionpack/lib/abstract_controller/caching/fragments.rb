@@ -93,9 +93,12 @@ module AbstractController
       def read_fragment(key, options = nil)
         return unless cache_configured?
 
+        puts "***** controller.read_fragment key #{key.inspect}"
         key = combined_fragment_cache_key(key)
+        puts "***** controller.read_fragment combined key #{key.inspect}"
         instrument_fragment_cache :read_fragment, key do
           result = cache_store.read(key, options)
+          puts "***** cache_store read #{result.inspect}"
           result.respond_to?(:html_safe) ? result.html_safe : result
         end
       end
