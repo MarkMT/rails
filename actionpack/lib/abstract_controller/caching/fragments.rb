@@ -98,7 +98,7 @@ module AbstractController
         puts "***** controller.read_fragment combined key #{key.inspect}"
         instrument_fragment_cache :read_fragment, key do
           result = cache_store.read(key, options)
-          puts "***** cache_store read #{result.inspect}"
+          puts "***** cache_store read #{result.try(:first, 150).inspect}"
           result.respond_to?(:html_safe) ? result.html_safe : result
         end
       end
