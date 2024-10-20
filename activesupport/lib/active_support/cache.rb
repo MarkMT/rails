@@ -369,7 +369,8 @@ module ActiveSupport
         instrument(:read, name, options) do |payload|
           entry = read_entry(key, **options, event: payload)
 
-          puts "***** entry #{entry.inspect}"
+          puts "***** entry #{entry.value.inspect}"
+          puts "***** entry #{entry.version.inspect}"
           if entry
             if entry.expired?
               delete_entry(key, **options)
