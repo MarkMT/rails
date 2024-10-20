@@ -85,10 +85,9 @@ module AbstractController
         puts "***** controller.write_fragment combined key #{key.inspect}"
         instrument_fragment_cache :write_fragment, key do
           content = content.to_str
-          result = cache_store.write(key, content, options)
-          puts "***** cache_store write #{result.try(:first, 150).inspect}"
-          result
+          cache_store.write(key, content, options)
         end
+        puts "***** cache_store write #{content.try(:first, 150).inspect}"
         content
       end
 
