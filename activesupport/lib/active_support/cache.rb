@@ -477,7 +477,10 @@ module ActiveSupport
         options = merged_options(options)
 
         instrument(:write, name, options) do
+          puts "***** cache.write normalized key #{normalize_key(name, options).inspect}"
+          puts "***** cache.write normalised version #{normalize_version(name, options).inspect}"
           entry = Entry.new(value, **options.merge(version: normalize_version(name, options)))
+          puts "***** entry version #{entry.version.inspect}"
           write_entry(normalize_key(name, options), entry, **options)
         end
       end
