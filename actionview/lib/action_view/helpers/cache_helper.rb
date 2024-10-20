@@ -237,7 +237,7 @@ module ActionView
 
       def fragment_for(name = {}, options = nil, &block)
         puts "***** name #{name.inspect}"
-        if content = read_fragment_for(name, options)\
+        if content = read_fragment_for(name, options)
           puts "***** hit"
           @view_renderer.cache_hits[@current_template&.virtual_path] = :hit if defined?(@view_renderer)
           content
