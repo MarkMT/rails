@@ -80,7 +80,9 @@ module AbstractController
       def write_fragment(key, content, options = nil)
         return content unless cache_configured?
 
+        puts "***** controller.write_fragment key #{key.inspect}"
         key = combined_fragment_cache_key(key)
+        puts "***** controller.write_fragment combined key #{key.inspect}"
         instrument_fragment_cache :write_fragment, key do
           content = content.to_str
           cache_store.write(key, content, options)
