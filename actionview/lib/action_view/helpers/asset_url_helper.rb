@@ -265,6 +265,7 @@ module ActionView
       # extensions can override this method to point to custom assets
       # or generate digested paths or query strings.
       def compute_asset_path(source, options = {})
+        puts "***** ActionView::Helpers::AssetUrlHelpers#compute_asset_path"
         dir = ASSET_PUBLIC_DIRECTORIES[options[:type]] || ""
         File.join(dir, source)
       end
