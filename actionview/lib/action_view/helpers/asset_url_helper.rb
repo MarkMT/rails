@@ -184,6 +184,7 @@ module ActionView
       #     asset_path("foo", skip_pipeline: true, extname: ".js")     # => "/foo.js"
       #     asset_path("foo.css", skip_pipeline: true, extname: ".js") # => "/foo.css.js"
       def asset_path(source, options = {})
+        puts "***** ActionView::Helpers::AssetUrlHelpers"
         raise ArgumentError, "nil is not a valid asset source" if source.nil?
 
         source = source.to_s
@@ -203,6 +204,7 @@ module ActionView
             source = compute_asset_path(source, options)
           end
         end
+        puts "***** source #{source}"
 
         relative_url_root = defined?(config.relative_url_root) && config.relative_url_root
         if relative_url_root
