@@ -20,6 +20,10 @@ module ActionView
       # "X-CSRF-Token" HTTP header. If you are using rails-ujs this happens automatically.
       #
       def csrf_meta_tags
+        puts "***** defined #{defined = defined?(protect_against_forgery?).inspect}"
+        puts "***** protect #{protect_against_forgery?.inspect}" if defined
+        puts "***** token #{request_forgery_protection_token}"
+        puts "***** value #{form_authenticity_token}"
         if defined?(protect_against_forgery?) && protect_against_forgery?
           [
             tag("meta", name: "csrf-param", content: request_forgery_protection_token),
